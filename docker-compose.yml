@@ -3,9 +3,11 @@ services:
     image: nginx-rtmp:1.0.0
     ports:
       - 8000:80
+      - 1935:1935
     volumes:
       - ./nginx/conf:/usr/local/nginx/conf
       - ./nginx/logs:/usr/local/nginx/logs
+      - ./nginx/stream:/usr/local/nginx/html/stream
     deploy:
       mode: replicated
       replicas: 2
@@ -15,13 +17,13 @@ services:
         delay: 10s
         failure_action: rollback
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://127.0.0.1"]
+      test: ["CMD", "curl", "-f", "http://127.0.0.1/index.html"]
       #test: ["CMD-SHELL", "exit 0"]
       interval: 60s
       timeout: 5s
       retries: 3
       start_period: 60s
-
 volumes:
-  #etc-nginx:
+  etc-nginx:
   log-nginx:
+  hls-nginx:
