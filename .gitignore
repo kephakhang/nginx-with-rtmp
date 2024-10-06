@@ -7,4 +7,4 @@
 *.zip
 *.gz
 *.tar
-logs
+*.log
