@@ -7,7 +7,7 @@ services:
     volumes:
       - ./nginx/conf:/usr/local/nginx/conf
       - ./nginx/logs:/usr/local/nginx/logs
-      - ./nginx/stream:/usr/local/nginx/html/stream
+      - ./nginx/html/stream:/usr/local/nginx/html/stream
     deploy:
       mode: replicated
       replicas: 2
@@ -25,5 +25,5 @@ services:
       start_period: 60s
 volumes:
   etc-nginx:
-  log-nginx:
-  hls-nginx:
+  logs-nginx:
+  stream-nginx:
