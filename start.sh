@@ -5,3 +5,5 @@
 docker stack deploy -c docker-compose.yml vod-server
 
 docker stack ps vod-server
+
+# docker compose -f docker-compose.yml up

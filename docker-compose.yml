@@ -7,10 +7,14 @@ services:
     volumes:
       - ./nginx/conf:/usr/local/nginx/conf
       - ./nginx/logs:/usr/local/nginx/logs
+      - ./nginx/client_body_temp:/usr/local/nginx/client_body_temp
+      - ./nginx/proxy_temp:/usr/local/nginx/proxy_temp
+      - ./nginx/scgi_temp:/usr/local/nginx/scgi_temp
+      - ./nginx/uwsgi_temp:/usr/local/nginx/uwsgi_temp
       - ./nginx/html/stream:/usr/local/nginx/html/stream
     deploy:
       mode: replicated
-      replicas: 2
+      replicas: 1
       update_config:
         parallelism: 3
         order: start-first
